@@ -11,15 +11,16 @@ export default function App() {
         }}>
             <div style={{
                 position: 'absolute',
-                top: '75%',
+                top: '95%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
                 zIndex: 1,
                 color: 'white',
                 textAlign: 'center',
                 pointerEvents: 'none',
-                fontSize: '2em',
-                color: 'orange'
+                fontSize: '1em',
+                color: 'yellow',
+                filter: 'drop-shadow(0 0 0.15em red)',
             }}>
                 <h1>albert cai</h1>
             </div>
@@ -27,12 +28,12 @@ export default function App() {
                 <color attach="background" args={['#353535']} />
                 <fog attach="fog" args={['#353535', 5, 20]} />
                 <ambientLight intensity={2} />
-                <CustomModel rotation={[-0.63, 0, 0]} scale={2} position={[0, -1.175, 0]} />
+                <CustomModel rotation={[0, -0.5, 0]} scale={1} position={[0, -0.4, 0]} />
                 <Cookie distance={100} intensity={15} angle={0.6} penumbra={1} position={[2, 5, 0]} />
                 <AccumulativeShadows receiveShadow temporal frames={100} opacity={0.8} alphaTest={0.9} scale={12} position={[0, -0.5, 0]}>
                     <RandomizedLight radius={4} ambient={0.5} position={[5, 8, -10]} bias={0.001} />
                 </AccumulativeShadows>
-                <mesh castShadow position={[-1.5, -0.245, 1]}>
+                <mesh castShadow position={[-0.25, -0.245, 1.25]}>
                     <sphereGeometry args={[0.25, 64, 64]} />
                     <meshStandardMaterial color="#353535" />
                 </mesh>
@@ -71,10 +72,13 @@ function Cookie(props) {
 }
 
 function CustomModel(props) {
-    const { nodes } = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/suzanne-high-poly/model.gltf')
-    return (
-        <mesh castShadow receiveShadow geometry={nodes.Suzanne.geometry} {...props} dispose={null}>
-            <meshStandardMaterial color="#353535" />
-        </mesh>
+    const { nodes } = useGLTF('/comingsoon.glb')
+    console.log(nodes)
+    return(
+        <>
+            <mesh castShadow receiveShadow geometry={nodes.Text.geometry} {...props} dispose={null}>
+                <meshStandardMaterial color="#353535" />
+            </mesh>
+        </>
     )
 }
