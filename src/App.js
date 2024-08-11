@@ -19,8 +19,8 @@ export default function App() {
                 textAlign: 'center',
                 pointerEvents: 'none',
                 fontSize: '1em',
-                color: 'yellow',
-                filter: 'drop-shadow(0 0 0.15em red)',
+                color: 'grey',
+                filter: 'drop-shadow(0 0 0.15em black)',
             }}>
                 <h1>albert cai</h1>
             </div>
